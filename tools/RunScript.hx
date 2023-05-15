@@ -132,7 +132,7 @@ class RunScript
 	}
 
 	public static function applyLixOverrides() {
-		var lixCachePath = "C:/Users/runneradmin/AppData/Roaming/haxe/haxe_libraries";
+		var lixCachePath = "C:/Users/natqu/AppData/Roaming/haxe/haxe_libraries";
 		var libs = sys.FileSystem.readDirectory(lixCachePath);
 
 		for (lib in libs) {
