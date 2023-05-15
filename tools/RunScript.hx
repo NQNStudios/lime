@@ -141,6 +141,8 @@ class RunScript
 			if (!sys.FileSystem.isDirectory(path)) continue;
 			path += '/${sys.FileSystem.readDirectory(path)[0]}';
 			path += '/${sys.FileSystem.readDirectory(path)[0]}';
+			if (path.split("/").pop() == 'github')
+				path += '/${sys.FileSystem.readDirectory(path)[0]}';
 			trace('$lib override: $path');
 			Haxelib.setOverridePath(new Haxelib(lib), path);
 		}
