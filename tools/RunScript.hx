@@ -134,6 +134,7 @@ class RunScript
 	public static function main()
 	{
 		Haxelib.setOverridePath(new Haxelib("lime"), Sys.getEnv("LIME_PATH"));
+		trace(Haxelib.getPath(new Haxelib("lime")));
 		var args = Sys.args();
 
 		if (args.length > 2 && args[0] == "rebuild" && args[1] == "tools")
