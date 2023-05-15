@@ -145,6 +145,7 @@ class RunScript
 				path += '/${sys.FileSystem.readDirectory(path)[0]}';
 			trace('$lib override: $path');
 			Haxelib.setOverridePath(new Haxelib(lib), path);
+			runCommand("", "haxelib", ["dev", lib, path]);
 		}
 
 	}
