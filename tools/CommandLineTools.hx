@@ -1901,6 +1901,7 @@ class CommandLineTools
 
 	public static function main():Void
 	{
+		Haxelib.setOverridePath(new Haxelib("lime"), Sys.getEnv("LIME_PATH"));
 		new CommandLineTools();
 	}
 
