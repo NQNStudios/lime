@@ -131,10 +131,25 @@ class RunScript
 		return result;
 	}
 
+	public static function applyLixOverrides() {
+		var lixCachePath = "C:/Users/natqu/AppData/Roaming/haxe/haxe_libraries";
+		var libs = sys.FileSystem.readDirectory(lixCachePath);
+
+		for (lib in libs) {
+			if (lib == ".cache") continue;
+			var path = '${lixCachePath}/${lib}';
+			if (!sys.FileSystem.isDirectory(path)) continue;
+			path += '/${sys.FileSystem.readDirectory(path)[0]}';
+			path += '/${sys.FileSystem.readDirectory(path)[0]}';
+			trace('$lib override: $path');
+			Haxelib.setOverridePath(new Haxelib(lib), path);
+		}
+
+	}
+
 	public static function main()
 	{
-		Haxelib.setOverridePath(new Haxelib("lime"), Sys.getEnv("LIME_PATH"));
-		trace(Haxelib.getPath(new Haxelib("lime")));
+		applyLixOverrides();
 		var args = Sys.args();
 
 		if (args.length > 2 && args[0] == "rebuild" && args[1] == "tools")
